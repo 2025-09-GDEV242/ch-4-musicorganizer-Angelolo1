@@ -139,6 +139,21 @@ public class MusicOrganizer
     }
     
     /**
+     * Q4.45
+     * Play every track once, but in a random order
+     */
+    public void playAllTrackShuffled()
+    {
+        if(tracks.size() > 0) {
+            ArrayList<Track> copy = new ArrayList<>(tracks);
+            java.util.Collection.shuffle(copy){
+            System.out.println("Now playing: " + track.getArtist()
+            + " - " + track.getTitle());
+            }
+        }
+    }
+    
+    /**
      * Stop the player.
      */
     public void stopPlaying()

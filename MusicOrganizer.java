@@ -64,7 +64,7 @@ public class MusicOrganizer
      * Q4.43
      * Play a single random track in the collection
      */
-    {
+    public void playRandomTrack() {
         if(tracks.size() > 0) {
             int index = new java.util.Random().nextInt(tracks.size());
             playTrack(index);

@@ -61,6 +61,17 @@ public class MusicOrganizer
     }
     
     /**
+     * Q4.43
+     * Play a single random track in the collection
+     */
+    {
+        if(tracks.size() > 0) {
+            int index = new java.util.Random().nextInt(tracks.size());
+            playTrack(index);
+        }
+    }
+    
+    /**
      * Return the number of tracks in the collection.
      * @return The number of tracks in the collection.
      */

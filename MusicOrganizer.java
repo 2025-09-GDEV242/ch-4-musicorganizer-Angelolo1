@@ -98,14 +98,18 @@ public class MusicOrganizer
 
     /**
      * Show a list of all the tracks in the collection.
+     * and their position in the index
      */
     public void listAllTracks()
     {
         System.out.println("Track listing: ");
+        int position = 0; 
 
-        for(Track track : tracks) {
-            System.out.println(track.getDetails());
-            }
+        for (Track track : tracks) {
+            System.out.println(position + ": " + track.getDetails());
+            position++; 
+        }
+
         System.out.println();
     }
 
@@ -185,10 +189,30 @@ public class MusicOrganizer
         }
         return true;
     }
-    
+
     private boolean validIndex(int index)
     {
         return index >= 0 && index < tracks.size();
+    }
+
+    /**
+     * List the names of tracks whose details contain the given search string.
+     * @param searchString The string to match.
+     */
+    public void listMatching(String searchString)
+    {
+        boolean found = false;
+
+        for (Track track : tracks) {
+            if (track.getDetails().contains(searchString)) {
+                System.out.println(track.getDetails());
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No matches found for: " + searchString);
+        }
     }
 
     private void readLibrary(String folderName)

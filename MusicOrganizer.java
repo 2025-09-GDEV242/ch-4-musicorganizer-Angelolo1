@@ -215,6 +215,27 @@ public class MusicOrganizer
         }
     }
 
+    /**
+     * Play samples of all tracks by a given artist, one after the other.
+     * @param artist The artist's name to match.
+     */
+    public void playByArtist(String artist)
+    {
+        boolean found = false;
+
+        for (Track track : tracks) {
+            if (track.getArtist().contains(artist)) {
+                player.playSample(track.getFilename());
+                System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No tracks found for artist: " + artist);
+        }
+    }
+
     private void readLibrary(String folderName)
     {
         ArrayList<Track> tempTracks = reader.readTracks(folderName, ".mp3");

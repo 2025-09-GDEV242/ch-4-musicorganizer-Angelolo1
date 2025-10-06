@@ -51,12 +51,13 @@ public class MusicOrganizer
      * Play a track in the collection.
      * @param index The index of the track to be played.
      */
-    public void playTrack(int index)
-    {
-        if(indexValid(index)) {
+    public void playTrack(int index) {
+        if (validIndex(index)) {
             Track track = tracks.get(index);
             player.playSample(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+        } else {
+            System.out.println("Invalid index.");
         }
     }
 
@@ -86,9 +87,13 @@ public class MusicOrganizer
      */
     public void listTrack(int index)
     {
-        System.out.print("Track " + index + ": ");
-        Track track = tracks.get(index);
-        System.out.println(track.getDetails());
+        if (validIndex(index)) {
+            System.out.print("Track " + index + ": ");
+            Track track = tracks.get(index);
+            System.out.println(track.getDetails());
+        } else {
+            System.out.println("Invalid index.");
+        }
     }
 
     /**
@@ -100,7 +105,7 @@ public class MusicOrganizer
 
         for(Track track : tracks) {
             System.out.println(track.getDetails());
-        }
+            }
         System.out.println();
     }
 
@@ -123,8 +128,11 @@ public class MusicOrganizer
      */
     public void removeTrack(int index)
     {
-        if(indexValid(index)) {
+        if (validIndex(index)) {
             tracks.remove(index);
+            System.out.println("Track removed.");
+        } else {
+            System.out.println("Invalid index.");
         }
     }
 
@@ -176,6 +184,11 @@ public class MusicOrganizer
             return false;
         }
         return true;
+    }
+    
+    private boolean validIndex(int index)
+    {
+        return index >= 0 && index < tracks.size();
     }
 
     private void readLibrary(String folderName)

@@ -169,24 +169,13 @@ public class MusicOrganizer
      * @param index The index to be checked.
      * @return true if the index is valid, false otherwise.
      */
-    private boolean indexValid(int index)
+    private boolean indexValid(int index) 
     {
-        // The return value.
-        // Set according to whether the index is valid or not.
-        boolean valid;
-
-        if(index < 0) {
-            System.out.println("Index cannot be negative: " + index);
-            valid = false;
+        if (index < 0 || index >= tracks.size()) {
+            System.out.println("Invalid index: " + index + ". Valid range is 0 to " + (tracks.size() - 1));
+            return false;
         }
-        else if(index >= tracks.size()) {
-            System.out.println("Index is too large: " + index);
-            valid = false;
-        }
-        else {
-            valid = true;
-        }
-        return valid;
+        return true;
     }
 
     private void readLibrary(String folderName)
